@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Prismic from '@prismicio/client';
-import { RichText } from 'prismic-dom';
 import { FiUser, FiCalendar } from 'react-icons/fi';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
+import Link from 'next/link';
 
 import { getPrismicClient } from '../services/prismic';
 import commonStyles from '../styles/common.module.scss';
@@ -29,35 +29,35 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-export default function Home({ postsPagination }: HomeProps) {
-  console.log(postsPagination);
-
+export default function Home({ postsPagination }: HomeProps): JSX.Element {
   return (
     <>
       <Head>
         <title>Spacetraveling</title>
       </Head>
-      <main className={styles.container}>
+      <main className={`${styles.container} ${commonStyles.commonContainer}`}>
         <div className={styles.posts}>
           {postsPagination.results.map(post => (
-            <a href="#" key={post.uid}>
-              <strong>{post.data.title}</strong>
-              <p>{post.data.subtitle}</p>
-              <div className={styles.postInfo}>
-                <div>
-                  <span>
-                    <FiCalendar size={20} />
-                  </span>
-                  <time>{post.first_publication_date}</time>
+            <Link href={`/post/${post.uid}`} key={post.uid}>
+              <a>
+                <strong>{post.data.title}</strong>
+                <p>{post.data.subtitle}</p>
+                <div className={styles.postInfo}>
+                  <div>
+                    <span>
+                      <FiCalendar size={20} />
+                    </span>
+                    <time>{post.first_publication_date}</time>
+                  </div>
+                  <div>
+                    <span>
+                      <FiUser size={20} />
+                    </span>
+                    <span>{post.data.author}</span>
+                  </div>
                 </div>
-                <div>
-                  <span>
-                    <FiUser size={20} />
-                  </span>
-                  <span>{post.data.author}</span>
-                </div>
-              </div>
-            </a>
+              </a>
+            </Link>
           ))}
         </div>
       </main>
@@ -108,13 +108,3 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
-
-/**
- * format(
-	new Date(),
-	"'Hoje é' eeee",
-	{
-		locale: ptBR,
-	}
-)
- */
