@@ -1,1 +1,60 @@
 // TODO
+.container {
+  max-width: 720px;
+  height: 4rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.posts {
+  text-align: justify;
+
+  a {
+    & + a {
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+
+    strong {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin-top: 0.5rem;
+    }
+
+    div.postInfo {
+      display: flex;
+      justify-content: left;
+      margin-top: 1rem;
+
+      div:last-child {
+        margin-left: 1rem;
+      }
+
+      span:first-child {
+        margin-right: 0.5rem;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    p,
+    time,
+    span {
+      color: var(--gray-200);
+    }
+
+    span,
+    time {
+      font-size: 0.8rem;
+    }
+  }
+}
