@@ -39,22 +39,14 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
     setNextPage(postsPagination.next_page);
   }, [postsPagination]);
 
-  console.log(posts);
-
   async function handleLoadMorePosts(): Promise<void> {
-    await fetch(postsPagination.next_page)
+    await fetch(nextPage)
       .then(response => response.json())
       .then(data => {
         const results = data.results.map(post => {
           return {
             uid: post.uid,
-            first_publication_date: format(
-              new Date(post.first_publication_date),
-              'dd MMM yyyy',
-              {
-                locale: ptBR,
-              }
-            ),
+            first_publication_date: post.first_publication_date,
             data: post.data,
           };
         });
@@ -82,7 +74,15 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
                       <span>
                         <FiCalendar size={20} />
                       </span>
-                      <time>{post.first_publication_date}</time>
+                      <time>
+                        {format(
+                          new Date(post.first_publication_date),
+                          'dd MMM yyyy',
+                          {
+                            locale: ptBR,
+                          }
+                        )}
+                      </time>
                     </div>
                     <div>
                       <span>
@@ -127,13 +127,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const results = postsResponse.results.map(post => {
     return {
       uid: post.uid,
-      first_publication_date: format(
-        new Date(post.first_publication_date),
-        'dd MMM yyyy',
-        {
-          locale: ptBR,
-        }
-      ),
+      first_publication_date: post.first_publication_date,
+      // first_publication_date: format(
+      //   new Date(post.first_publication_date),
+      //   'dd MMM yyyy',
+      //   {
+      //     locale: ptBR,
+      //   }
+      // ),
       data: post.data,
     };
   });
