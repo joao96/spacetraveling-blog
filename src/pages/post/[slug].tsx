@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
 import { RichText } from 'prismic-dom';
+import { useEffect } from 'react';
 import { getPrismicClient } from '../../services/prismic';
 
 import commonStyles from '../../styles/common.module.scss';
@@ -37,7 +38,13 @@ interface PostProps {
  */
 
 export default function Post({ post }: PostProps): JSX.Element {
-  console.log(JSON.stringify(post, null, 2));
+  const words = post.data?.content.reduce((acc, item) => {
+    const sizeOfHeading = item.heading.split(' ').length;
+    const sizeOfBody = RichText.asText(item.body).split(' ').length;
+    return acc + sizeOfHeading + sizeOfBody;
+  }, 0);
+
+  const timeToRead = Math.ceil(words / 200);
 
   return (
     <>
@@ -67,7 +74,7 @@ export default function Post({ post }: PostProps): JSX.Element {
               <span>
                 <FiClock size={20} />
               </span>
-              <span>4 min</span>
+              <span>{timeToRead} min</span>
             </div>
           </div>
           {post.data.content.map(content => (
@@ -75,7 +82,9 @@ export default function Post({ post }: PostProps): JSX.Element {
               <h2>{content.heading}</h2>
               <div
                 className={styles.contentBodyText}
-                dangerouslySetInnerHTML={{ __html: String(content.body) }}
+                dangerouslySetInnerHTML={{
+                  __html: RichText.asHtml(content.body),
+                }}
               />
             </div>
           ))}
@@ -114,7 +123,7 @@ export const getStaticProps: GetStaticProps = async context => {
       content: response.data.content.map(itemContent => {
         return {
           heading: itemContent.heading,
-          body: RichText.asHtml(itemContent.body),
+          body: itemContent.body,
         };
       }),
     },
