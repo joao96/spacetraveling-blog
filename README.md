@@ -9,19 +9,20 @@
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/joao96/spacetraveling-blog?style=flat-square">
 
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joao96/spacetraveling-blog?style=flat-square">
-  <img alt="License" src="https://img.shields.io/github/license/joao96/spacetraveling-blog?style=flat-square">
+<!--   <img alt="License" src="https://img.shields.io/github/license/joao96/spacetraveling-blog?style=flat-square"> -->
 </p>
 
 <p align="center">
   <a href="#checkered_flag-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#page_facing_up-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#get-in-touch-monocle_face">Get in touch</a>
+  <a href="#information_source-how-to-use">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sparkles-how-it-works">How It Works</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<!--   <a href="#page_facing_up-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
+  <a href="#get-in-touch-monocle_face">Get in Touch</a>
 </p>
 
 ## :checkered_flag: Technologies
 
-- [React JS](https://reactjs.org/)
+- [Next JS](https://nextjs.org/)
 - [Sass](https://sass-lang.com/)
 - [Prismic](https://prismic.io/docs)
 - [Jest](https://jestjs.io/)
@@ -58,7 +59,13 @@ Once the server is up, go to http://localhost:3000/ and you should see something
   <img src="public/spacetraveling-cover.png" alt="Initial page">
 </p>
 
-## :page_facing_up: License
+## :sparkles: How It Works
+
+The app is connected to a [Primsic](https://prismic.io/) (Headless CMS) project, where blog posts are handled. With that, the app then consumes the content from the client and displays it in screen. A simple pagination logic was added as well.
+
+Informations about the post, such as *last update date, author and time to read*, are provided inside the post page.
+
+<!-- ## :page_facing_up: License
 
 <a href="https://github.com/joao96/the-simplest-todo/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/github/license/joao96/the-simplest-todo?style=flat-square">
@@ -66,7 +73,7 @@ Once the server is up, go to http://localhost:3000/ and you should see something
 
 <br />
 
-This project is licensed under the MIT.
+This project is licensed under the MIT. -->
 
 ## Get in touch! :monocle_face:
 
