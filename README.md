@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="#checkered_flag-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_source-how-to-use">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-setup">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#sparkles-how-it-works">How It Works</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <!--   <a href="#page_facing_up-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
   <a href="#get-in-touch-monocle_face">Get in Touch</a>
@@ -29,7 +29,7 @@
 - [testing-library](https://testing-library.com/)
 - [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
 
-## :information_source: How To Use
+## :information_source: Setup
 
 In order to run this application, it's required that you have [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer. From your command line:
 
